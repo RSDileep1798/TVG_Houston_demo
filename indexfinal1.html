@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TVG Houston</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --color-bg: #f5f7f6;
+      --color-surface: #ffffff;
+      --color-surface-alt: #edf3f0;
+      --color-primary: #0A4D3C;
+      --color-primary-soft: #E1F1EB;
+      --color-primary-strong: #0F6F54;
+      --color-accent: #E2AF28;
+      --color-text: #122620;
+      --color-muted: #6B7C73;
+      --max-width: 1120px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    @media (min-width: 900px) {
+      .section {
+        padding: 5rem 0;
+      }
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(245, 247, 246, 0.95);
+      border-bottom: 1px solid rgba(10, 77, 60, 0.12);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.7rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 40%;
+      background: conic-gradient(
+        from 220deg,
+        #0F6F54,
+        #E1F1EB,
+        #0A4D3C,
+        #0F6F54
+      );
+      box-shadow: 0 0 0 1px rgba(10, 77, 60, 0.2),
+        0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text strong {
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.72rem;
+      color: var(--color-muted);
+    }
+
+    .logo-text span {
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: var(--color-primary);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transition: width 0.18s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.3rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--color-primary);
+      color: #ffffff;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease, color 0.15s ease;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(10, 77, 60, 0.25);
+      background: var(--color-primary-strong);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--color-primary);
+      border-color: rgba(10, 77, 60, 0.2);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-primary-soft);
+      color: var(--color-primary-strong);
+    }
+
+    .btn-sign {
+      background: transparent;
+      color: var(--color-primary);
+      border-color: rgba(10, 77, 60, 0.4);
+      box-shadow: none;
+      padding-inline: 1.1rem;
+    }
+
+    .btn-sign:hover {
+      background: rgba(225, 241, 235, 0.9);
+      color: var(--color-primary-strong);
+      border-color: rgba(10, 77, 60, 0.7);
+    }
+
+    .nav-menu-toggle {
+      display: inline-flex;
+      font-size: 1.3rem;
+      cursor: default; /* decorative only, no JS */
+      color: var(--color-primary);
+    }
+
+    @media (min-width: 850px) {
+      .nav-links {
+        display: flex;
+      }
+      .nav-menu-toggle {
+        display: none;
+      }
+    }
+
+    /* HERO */
+    .hero {
+      background: radial-gradient(circle at top left, #E1F1EB, #f5f7f6);
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding-top: 4.8rem;
+        padding-bottom: 4.8rem;
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 2.8rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2.1fr);
+        align-items: center;
+      }
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.25rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background: rgba(225, 241, 235, 0.9);
+      color: var(--color-primary);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      line-height: 1.05;
+      margin-top: 1rem;
+      margin-bottom: 0.8rem;
+      color: var(--color-text);
+    }
+
+    .hero-title span {
+      color: var(--color-primary);
+    }
+
+    .hero-sub {
+      color: var(--color-muted);
+      max-width: 34rem;
+      font-size: 0.98rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.8rem 0 1rem;
+    }
+
+    .hero-meta {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .hero-meta strong {
+      color: var(--color-text);
+    }
+
+    .hero-card {
+      background: var(--color-surface);
+      border-radius: 22px;
+      padding: 1.5rem 1.4rem;
+      border: 1px solid rgba(10, 77, 60, 0.15);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.4rem;
+      color: var(--color-primary);
+    }
+
+    .hero-card p {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+    }
+
+    .hero-card-list {
+      margin-top: 0.9rem;
+      list-style: none;
+      font-size: 0.86rem;
+      color: var(--color-muted);
+    }
+
+    .hero-card-list li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      gap: 0.45rem;
+      align-items: flex-start;
+    }
+
+    .hero-card-list li span:first-child {
+      color: var(--color-primary);
+      font-size: 0.9rem;
+      margin-top: 0.1rem;
+    }
+
+    /* SECTION HEADING */
+    .section-heading {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-heading h2 {
+      font-size: 1.7rem;
+      margin-bottom: 0.6rem;
+      color: var(--color-text);
+    }
+
+    .section-heading p {
+      color: var(--color-muted);
+      max-width: 32rem;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--color-surface);
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 900px) {
+      .about-grid {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        align-items: center;
+      }
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(10, 77, 60, 0.18);
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      background: var(--color-primary-soft);
+    }
+
+    .about-card {
+      background: var(--color-surface-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(10, 77, 60, 0.18);
+      padding: 1.3rem 1.2rem;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+    }
+
+    /* SERVICES & PRODUCTS */
+    .services {
+      background: var(--color-bg);
+    }
+
+    .service-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .service-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .service-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(10, 77, 60, 0.14);
+      padding: 1.3rem 1.2rem;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.35rem;
+      color: var(--color-text);
+    }
+
+    .service-card p {
+      color: var(--color-muted);
+      font-size: 0.88rem;
+    }
+
+    .service-tag {
+      font-size: 0.78rem;
+      color: var(--color-primary);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* PRODUCT GRID */
+    .products {
+      margin-top: 3rem;
+    }
+
+    .products-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .products-title-row h3 {
+      font-size: 1.1rem;
+      color: var(--color-text);
+    }
+
+    .products-title-row span {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    .product-grid {
+      display: grid;
+      gap: 1.3rem;
+    }
+
+    @media (min-width: 900px) {
+      .product-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    .product-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(10, 77, 60, 0.16);
+      padding: 1.1rem 1rem;
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .product-image {
+      height: 140px;
+      border-radius: 14px;
+      margin-bottom: 0.8rem;
+      background: radial-gradient(circle at top, #ffffff, #E1F1EB);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(10, 77, 60, 0.15);
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .product-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: var(--color-text);
+    }
+
+    .product-price {
+      font-size: 0.9rem;
+      color: var(--color-accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .product-meta {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    .product-meta strong {
+      color: var(--color-text);
+    }
+
+    .product-cta {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: var(--color-primary);
+    }
+
+    .add-cart-btn {
+      margin-top: 0.8rem;
+      width: 100%;
+      background: var(--color-primary);
+      color: #ffffff;
+      padding: 0.7rem 1rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 6px 16px rgba(10, 77, 60, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: background 0.2s ease, transform 0.2s ease,
+                  box-shadow 0.2s ease;
+    }
+
+    .add-cart-btn:hover {
+      background: var(--color-primary-strong);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(10, 77, 60, 0.45);
+    }
+
+    /* INDUSTRIES */
+    .industries {
+      background: var(--color-surface);
+    }
+
+    .industries-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 900px) {
+      .industries-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .industry-card {
+      background: var(--color-surface-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(10, 77, 60, 0.16);
+      padding: 1.2rem 1.1rem;
+      font-size: 0.88rem;
+      color: var(--color-muted);
+    }
+
+    .industry-card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.4rem;
+      color: var(--color-text);
+    }
+
+    /* CONTACT */
+    .contact {
+      background: var(--color-bg);
+    }
+
+    .contact-grid {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 900px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+        align-items: flex-start;
+      }
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+    }
+
+    .contact-info p {
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-info a {
+      color: var(--color-primary);
+    }
+
+    .contact-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(10, 77, 60, 0.16);
+      padding: 1.3rem 1.2rem;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .field-group {
+      margin-bottom: 0.9rem;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 0.82rem;
+      margin-bottom: 0.2rem;
+      color: var(--color-muted);
+    }
+
+    .field-input,
+    .field-textarea {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      border-radius: 10px;
+      border: 1px solid rgba(10, 77, 60, 0.2);
+      background: #ffffff;
+      color: var(--color-text);
+      font-size: 0.86rem;
+      outline: none;
+    }
+
+    .field-textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .field-input::placeholder,
+    .field-textarea::placeholder {
+      color: rgba(107, 124, 115, 0.8);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #ffffff;
+      border-top: 1px solid rgba(10, 77, 60, 0.16);
+      padding: 1.4rem 0;
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    /* SIGN-IN MODAL */
+    .signin-toggle {
+      display: none;
+    }
+
+    .signin-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 200;
+    }
+
+    .signin-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 320px;
+      max-width: 90vw;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.25);
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 210;
+      padding: 1.6rem 1.4rem 1.3rem;
+    }
+
+    .signin-toggle:checked ~ .signin-backdrop {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .signin-toggle:checked ~ .signin-modal {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .signin-title {
+      margin: 0 0 0.4rem;
+      font-size: 1.2rem;
+      color: var(--color-primary);
+    }
+
+    .signin-sub {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .signin-field-label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .signin-input {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 10px;
+      border: 1px solid rgba(10, 77, 60, 0.25);
+      margin-bottom: 0.9rem;
+      font-size: 0.86rem;
+      outline: none;
+    }
+
+    .signin-input::placeholder {
+      color: rgba(107, 124, 115, 0.8);
+    }
+
+    .signin-btn {
+      width: 100%;
+      padding: 0.7rem;
+      border-radius: 12px;
+      border: none;
+      background: var(--color-primary);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin-top: 0.2rem;
+      box-shadow: 0 10px 26px rgba(10, 77, 60, 0.35);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .signin-btn:hover {
+      background: var(--color-primary-strong);
+      transform: translateY(-1px);
+    }
+
+    .signin-footer {
+      margin-top: 0.9rem;
+      font-size: 0.82rem;
+      text-align: center;
+      color: var(--color-muted);
+    }
+
+    .signin-footer strong {
+      color: var(--color-primary);
+      cursor: pointer;
+    }
+
+    .signin-close {
+      position: absolute;
+      right: 0.9rem;
+      top: 0.7rem;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--color-muted);
+    }
+
+    .signin-close:hover {
+      color: var(--color-text);
+    }
+
+    /* AI CHAT WIDGET – Floating bubble bottom-left */
+    .chat-toggle {
+      display: none;
+    }
+
+    .chat-bubble {
+      position: fixed;
+      bottom: 1.3rem;
+      left: 1.3rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      box-shadow: 0 12px 30px rgba(10, 77, 60, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      cursor: pointer;
+      z-index: 60;
+      font-size: 1.5rem;
+    }
+
+    .chat-bubble span {
+      font-size: 1.3rem;
+    }
+
+    .chat-window {
+      position: fixed;
+      bottom: 4.8rem;
+      left: 1.3rem;
+      width: 300px;
+      max-width: 90vw;
+      background: #ffffff;
+      border-radius: 18px;
+      border: 1px solid rgba(10, 77, 60, 0.2);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 55;
+      transform-origin: bottom left;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    /* Hide window when unchecked */
+    .chat-toggle:not(:checked) ~ .chat-window {
+      transform: scale(0.1);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding: 0.6rem 0.75rem;
+      background: linear-gradient(135deg, #0F6F54, #0A4D3C);
+      color: #ffffff;
+    }
+
+    .chat-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .chat-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    .chat-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .chat-status {
+      font-size: 0.7rem;
+      opacity: 0.9;
+    }
+
+    .chat-close-label {
+      cursor: pointer;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .chat-body {
+      padding: 0.7rem 0.7rem 0.4rem;
+      max-height: 220px;
+      overflow-y: auto;
+      background: #f5f7f6;
+    }
+
+    .chat-msg-row {
+      margin-bottom: 0.5rem;
+      display: flex;
+    }
+
+    .chat-msg {
+      padding: 0.45rem 0.6rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .from-bot .chat-msg {
+      background: #ffffff;
+      border: 1px solid rgba(10, 77, 60, 0.16);
+      color: var(--color-text);
+    }
+
+    .from-user {
+      justify-content: flex-end;
+    }
+
+    .from-user .chat-msg {
+      background: var(--color-primary);
+      border: 1px solid rgba(10, 77, 60, 0.4);
+      color: #ffffff;
+    }
+
+    .chat-input-row {
+      padding: 0.45rem 0.6rem 0.55rem;
+      border-top: 1px solid rgba(10, 77, 60, 0.15);
+      background: #ffffff;
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .chat-input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(10, 77, 60, 0.26);
+      padding: 0.35rem 0.6rem;
+      font-size: 0.78rem;
+      background: #f5f7f6;
+      color: var(--color-text);
+      outline: none;
+    }
+
+    .chat-send {
+      font-size: 0.8rem;
+      border: none;
+      background: var(--color-primary);
+      border-radius: 999px;
+      padding: 0.35rem 0.6rem;
+      cursor: pointer;
+      color: #ffffff;
+    }
+
+    .chat-hint {
+      font-size: 0.7rem;
+      color: var(--color-muted);
+      padding: 0 0.7rem 0.55rem;
+      background: #ffffff;
+    }
+
+    @media (max-width: 600px) {
+      .chat-bubble {
+        left: 0.9rem;
+        bottom: 0.9rem;
+      }
+      .chat-window {
+        left: 0.9rem;
+        bottom: 4.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIGN-IN TOGGLE (for popup) -->
+  <input type="checkbox" id="signin-toggle" class="signin-toggle" />
+
+  <!-- HEADER -->
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <div class="logo-text">
+          <strong>TVG</strong>
+          <span>Houston</span>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#about" class="nav-link">About TVG Houston</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#industries" class="nav-link">Industries</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+
+        <!-- Sign button now opens popup -->
+        <label for="signin-toggle" class="btn btn-sign" style="cursor:pointer;">
+          Sign
+        </label>
+
+        <div class="nav-menu-toggle">☰</div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero section" id="top">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="tag">
+              <span class="tag-dot"></span>
+              International Bottle Supply & Logistics
+            </div>
+            <h1 class="hero-title">
+              TVG Houston — <span>Premium bottle products</span> with safe delivery worldwide.
+            </h1>
+            <p class="hero-sub">
+              We design and supply high-quality bottles for food, cosmetic and industrial use,
+              with careful packing and safety-focused delivery to your destination anywhere
+              across the globe.
+            </p>
+
+            <div class="hero-cta-row">
+              <a href="#services" class="btn">
+                View Services
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                Contact Sales
+              </a>
+            </div>
+
+            <div class="hero-meta">
+              <span>🌍 Serving <strong>North America, Europe, Middle East & Asia</strong></span>
+              <span>✅ Safety-checked, damage-controlled deliveries</span>
+            </div>
+          </div>
+
+          <aside class="hero-card">
+            <h3>Why buyers trust TVG Houston</h3>
+            <p>
+              Every shipment is checked for bottle integrity, packaging quality and accurate
+              labelling before it leaves our facility.
+            </p>
+            <ul class="hero-card-list">
+              <li><span>◆</span><span>Durable bottles designed for liquids, oils, cosmetics and chemicals.</span></li>
+              <li><span>◆</span><span>Clear USD pricing, with size and dimension details for easy planning.</span></li>
+              <li><span>◆</span><span>Safe export packing to reduce breakage during international transport.</span></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT TVG HOUSTON -->
+    <section id="about" class="about section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>About TVG Houston</h2>
+          <p>
+            TVG Houston is a global partner for bottle products, combining strong manufacturing
+            standards with reliable international shipping.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div>
+            <p style="color: var(--color-muted); font-size: 0.95rem;">
+              From small cosmetic bottles to large industrial containers, we focus on clarity,
+              strength and consistency. Our team works closely with you to choose the correct
+              size, material and packaging so your order arrives ready to fill, label and ship
+              to your own customers.
+            </p>
+            <div class="pill-row">
+              <span class="pill">High-clarity PET & glass bottles</span>
+              <span class="pill">Industrial HDPE containers</span>
+              <span class="pill">Food-grade certified options</span>
+              <span class="pill">Safe export-ready packing</span>
+            </div>
+          </div>
+
+          <div class="about-card">
+            <strong style="display:block; margin-bottom:0.4rem; color: var(--color-primary);">
+              Our quality & safety standard
+            </strong>
+            <p>
+              • Each batch checked for defects, capacity and finish.<br/>
+              • Clear documentation and USD pricing for easy purchasing.<br/>
+              • Strong cartons and pallets designed to protect during transit.<br/>
+              • Dedicated support for new projects and recurring orders.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES & PRODUCTS -->
+    <section id="services" class="services section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Services</h2>
+          <p>
+            We support you from product selection to final delivery, making international
+            bottle sourcing simple and secure.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-tag">Consulting</div>
+            <h3>Product selection & sizing</h3>
+            <p>
+              Get help selecting bottle type, capacity, height and width that match your
+              product, filling lines and branding.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">Packaging</div>
+            <h3>Safety-first export packing</h3>
+            <p>
+              We use reinforced cartons, dividers and pallets to protect bottles from impact,
+              vibration and stacking pressure.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">Logistics</div>
+            <h3>International shipping</h3>
+            <p>
+              Sea and air freight options with tracking and documentation to move your
+              products safely to ports and warehouses worldwide.
+            </p>
+          </article>
+        </div>
+
+        <!-- PRODUCTS -->
+        <div class="products">
+          <div class="products-title-row">
+            <h3>Sample bottle products</h3>
+            <span>All prices in USD · Dimensions include approximate height and width.</span>
+          </div>
+
+          <div class="product-grid">
+            <!-- 500 ml -->
+            <article class="product-card">
+              <div class="product-image">
+                <img src="images/images:bottle1.jpeg" alt="Matte green bottle 500 ml">
+              </div>
+              <div class="product-name">Matte Green Bottle · 500 ml</div>
+              <div class="product-price">$10.90 / pack of 6</div>
+              <div class="product-meta">
+                <div><strong>Size:</strong> Height 20 cm · Width 6.5 cm</div>
+                <div><strong>Use:</strong> Water, health drinks, oils, cosmetics</div>
+              </div>
+              <div class="product-cta">
+                ✅ Premium finish · Export-safe packaging
+              </div>
+              <button class="add-cart-btn">Add to Cart</button>
+            </article>
+
+            <!-- 750 ml -->
+            <article class="product-card">
+              <div class="product-image">
+                <img src="images/images:bottle1.jpeg" alt="Matte green bottle 750 ml">
+              </div>
+              <div class="product-name">Matte Green Bottle · 750 ml</div>
+              <div class="product-price">$14.90 / pack of 6</div>
+              <div class="product-meta">
+                <div><strong>Size:</strong> Height 25 cm · Width 7.5 cm</div>
+                <div><strong>Use:</strong> Water, oil, beverages, cosmetic liquids</div>
+              </div>
+              <div class="product-cta">
+                ✅ Premium finish · Export-safe packaging
+              </div>
+              <button class="add-cart-btn">Add to Cart</button>
+            </article>
+
+            <!-- 1 L -->
+            <article class="product-card">
+              <div class="product-image">
+                <img src="images/images:bottle1.jpeg" alt="Matte green bottle 1 liter">
+              </div>
+              <div class="product-name">Matte Green Bottle · 1 Liter</div>
+              <div class="product-price">$18.50 / pack of 4</div>
+              <div class="product-meta">
+                <div><strong>Size:</strong> Height 30 cm · Width 8.5 cm</div>
+                <div><strong>Use:</strong> Water, cold drinks, kitchen liquids, oils</div>
+              </div>
+              <div class="product-cta">
+                ✅ Strong material · Ideal for exporting
+              </div>
+              <button class="add-cart-btn">Add to Cart</button>
+            </article>
+
+            <!-- 5 L -->
+            <article class="product-card">
+              <div class="product-image">
+                <img src="images/images:bottle1.jpeg" alt="Matte green bottle 5 liters">
+              </div>
+              <div class="product-name">Matte Green Bottle · 5 Liters</div>
+              <div class="product-price">$22.90 / pack of 2</div>
+              <div class="product-meta">
+                <div><strong>Size:</strong> Height 38 cm · Width 15 cm</div>
+                <div><strong>Use:</strong> Industrial liquid, oil, chemical, bulk storage</div>
+              </div>
+              <div class="product-cta">
+                🟢 Heavy-duty · Safe for transport
+              </div>
+              <button class="add-cart-btn">Add to Cart</button>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section id="industries" class="industries section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Industries we serve</h2>
+          <p>
+            Our bottle solutions support both retail brands and heavy industry, with
+            quality and safety at every step.
+          </p>
+        </div>
+
+        <div class="industries-grid">
+          <article class="industry-card">
+            <h3>Food & Beverage</h3>
+            <p>
+              Bottles for juices, sauces, oils and specialty drinks, with food-grade materials
+              and tamper-evident options.
+            </p>
+          </article>
+
+          <article class="industry-card">
+            <h3>Chemical & Industrial</h3>
+            <p>
+              Robust containers engineered for chemicals, lubricants, detergents and lab
+              environments, designed for safe handling.
+            </p>
+          </article>
+
+          <article class="industry-card">
+            <h3>Cosmetics & Personal Care</h3>
+            <p>
+              Premium packaging for shampoos, lotions, serums and oils, ready for both
+              local and international markets.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Contact TVG Houston</h2>
+          <p>
+            Send us your requirements and we’ll prepare bottle options, USD pricing and
+            a safe delivery plan for your destination.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <p><strong>Phone:</strong> <a href="tel:+18320000000">+1 (832) 000-0000</a></p>
+            <p><strong>Email:</strong> <a href="mailto:sales@tvghouston.com">sales@tvghouston.com</a></p>
+            <p><strong>Location:</strong><br>
+              TVG Houston<br>
+              Energy Commerce Park<br>
+              Houston, Texas, USA
+            </p>
+            <p style="margin-top: 1rem;">
+              We manage safe packing, documentation and coordination with carriers to
+              reduce risk and bring your products to port, warehouse or distribution
+              center in the best possible condition.
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <form>
+              <div class="field-group">
+                <label class="field-label">Full name</label>
+                <input class="field-input" type="text" placeholder="Your name" required />
+              </div>
+
+              <div class="field-group">
+                <label class="field-label">Business email</label>
+                <input class="field-input" type="email" placeholder="you@company.com" required />
+              </div>
+
+              <div class="field-group">
+                <label class="field-label">Country / destination</label>
+                <input class="field-input" type="text" placeholder="e.g. USA, Germany, UAE" />
+              </div>
+
+              <div class="field-group">
+                <label class="field-label">What are you looking for?</label>
+                <textarea class="field-textarea" placeholder="Bottle type, sizes, quantities, delivery deadline..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn" style="width: 100%; margin-top: 0.4rem;">
+                Send request
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span>© 2025 TVG Houston. All rights reserved.</span>
+      <span>Premium bottle products · Safe international delivery</span>
+    </div>
+  </footer>
+
+  <!-- SIGN-IN BACKDROP & MODAL -->
+  <label for="signin-toggle" class="signin-backdrop"></label>
+
+  <div class="signin-modal">
+    <label for="signin-toggle" class="signin-close" title="Close">×</label>
+    <h2 class="signin-title">Sign in to TVG Houston</h2>
+    <p class="signin-sub">
+      Enter your details to access your account and manage orders.
+    </p>
+
+    <label class="signin-field-label">Email</label>
+    <input type="email" class="signin-input" placeholder="you@example.com" required />
+
+    <label class="signin-field-label">Password</label>
+    <input type="password" class="signin-input" placeholder="Enter your password" required />
+
+    <button class="signin-btn">Sign In</button>
+
+    <p class="signin-footer">
+      Don't have an account?
+      <strong>Create account</strong>
+    </p>
+  </div>
+
+  <!-- AI CHAT WIDGET – Floating bubble bottom-left (opens by default) -->
+  <input type="checkbox" id="chat-toggle" class="chat-toggle" checked />
+
+  <!-- Bubble -->
+  <label for="chat-toggle" class="chat-bubble" title="Chat with TVG Houston AI">
+    <span>💬</span>
+  </label>
+
+  <!-- Chat window -->
+  <div class="chat-window">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar">AI</div>
+        <div>
+          <div class="chat-title">TVG Houston Assistant</div>
+          <div class="chat-status">Online · Ask about products & delivery</div>
+        </div>
+      </div>
+      <label for="chat-toggle" class="chat-close-label" title="Minimize chat">×</label>
+    </div>
+
+    <div class="chat-body">
+      <div class="chat-msg-row from-bot">
+        <div class="chat-msg">
+          Hi! I’m your AI assistant from TVG Houston. I can help you with bottle sizes,
+          USD pricing and safe international delivery options.
+        </div>
+      </div>
+      <div class="chat-msg-row from-user">
+        <div class="chat-msg">
+          I want to ship bottles to another country.
+        </div>
+      </div>
+      <div class="chat-msg-row from-bot">
+        <div class="chat-msg">
+          Great! Tell me what you’re bottling, how many units you need and your destination
+          country. We’ll suggest suitable bottles and packing for safe delivery.
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-input-row">
+      <input class="chat-input" type="text" placeholder="Type your question here..." />
+      <button class="chat-send">➤</button>
+    </div>
+    <div class="chat-hint">
+      Demo only · Connect a live chat or AI backend to make this fully interactive.
+    </div>
+  </div>
+</body>
+</html>
