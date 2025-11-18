@@ -4,15 +4,15 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
 
-import Home from './Pages/Home';
-import About from './Pages/About';
-import Services from './Pages/Services';
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
 import Products from './pages/Products'; 
-import Industries from './Pages/Industries';
-import Contact from './Pages/Contact';
-import SignIn from './Pages/SignIn';
-import Register from './Pages/Register';
-import Cart from './Pages/Cart';
+import Industries from './pages/Industries';
+import Contact from './pages/Contact';
+import SignIn from './pages/SignIn';
+import Register from './pages/Register';
+import Cart from './pages/Cart';
 
 export default function App() {
   return (
