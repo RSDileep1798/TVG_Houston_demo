@@ -4,7 +4,7 @@ export default function Services() {
   return (
     <section id="services" className="services section">
       <div className="container">
-        <div className="section-heading">
+        <div className="section-heading" data-aos="fade-up">
           <h2>Services</h2>
           <p>
             We support you from product selection to final delivery, making
@@ -13,7 +13,7 @@ export default function Services() {
         </div>
 
         <div className="service-grid">
-          <article className="service-card">
+          <article className="service-card" data-aos="fade-up" data-aos-delay="100">
             <div className="service-tag">Consulting</div>
             <h3>Product selection &amp; sizing</h3>
             <p>
@@ -22,7 +22,7 @@ export default function Services() {
             </p>
           </article>
 
-          <article className="service-card">
+          <article className="service-card" data-aos="fade-up" data-aos-delay="200">
             <div className="service-tag">Packaging</div>
             <h3>Safety-first export packing</h3>
             <p>
@@ -31,7 +31,7 @@ export default function Services() {
             </p>
           </article>
 
-          <article className="service-card">
+          <article className="service-card" data-aos="fade-up" data-aos-delay="300">
             <div className="service-tag">Logistics</div>
             <h3>International shipping</h3>
             <p>

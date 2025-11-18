@@ -92,7 +92,7 @@ export default function Products() {
             ✓ {notification}
           </div>
         )}
-        <div className="section-heading">
+        <div className="section-heading" data-aos="fade-up">
           <h2>Products</h2>
           <p>Browse our sample range of export-safe bottle products.</p>
         </div>

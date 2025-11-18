@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import HeroSlider from '../components/HeroSlider';
 
 export default function Home() {
-  const heroStyle = {
-    backgroundImage: `url(${process.env.PUBLIC_URL}/images/worldimage.png)`,
-  };
-
   return (
-    <section className="hero section" id="top" style={heroStyle}>
+    <>
+      <HeroSlider />
+      <section className="hero section" id="top">
       <div className="container">
         <div className="hero-grid">
           <div>
@@ -78,5 +77,6 @@ export default function Home() {
         </div>
       </div>
     </section>
+    </>
   );
 }

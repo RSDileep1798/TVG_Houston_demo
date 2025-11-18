@@ -79,7 +79,7 @@ export default function Navbar() {
                   position: 'absolute',
                   top: '-8px',
                   right: '-8px',
-                  backgroundColor: '#e74c3c',
+                  backgroundColor: 'var(--color-accent)',
                   color: 'white',
                   borderRadius: '50%',
                   width: '20px',
@@ -96,8 +96,8 @@ export default function Navbar() {
             )}
           </Link>
 
-          <Link to="/signin" className="btn btn-sign" onClick={closeMenu}>
-            Sign
+          <Link to="/customer-portal" className="btn btn-sign" onClick={closeMenu}>
+            Portal
           </Link>
 
           {/* Mobile toggle button */}
