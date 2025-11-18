@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
+import SignInModal from '../components/SignInModal';
 
 const PRODUCTS = [
   {
@@ -34,17 +37,49 @@ const PRODUCTS = [
 
 export default function Products() {
   const { addToCart } = useCart();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [notification, setNotification] = useState(null);
+  const [showSignInModal, setShowSignInModal] = useState(false);
+  const [pendingProduct, setPendingProduct] = useState(null);
 
   const handleAddToCart = (product) => {
+    if (!isAuthenticated()) {
+      // Show sign-in modal
+      setPendingProduct(product);
+      setShowSignInModal(true);
+      return;
+    }
+
+    // User is authenticated, add to cart
     addToCart(product);
     setNotification(`${product.name} added to cart!`);
     setTimeout(() => setNotification(null), 3000);
   };
 
+  const handleSignInSuccess = () => {
+    // After successful sign-in, add the pending product to cart
+    if (pendingProduct) {
+      addToCart(pendingProduct);
+      setNotification(`${pendingProduct.name} added to cart!`);
+      setTimeout(() => setNotification(null), 3000);
+      setPendingProduct(null);
+      // Navigate to cart page
+      navigate('/cart');
+    }
+  };
+
   return (
     <section className="services section">
       <div className="container">
+        <SignInModal
+          isOpen={showSignInModal}
+          onClose={() => {
+            setShowSignInModal(false);
+            setPendingProduct(null);
+          }}
+          onSuccess={handleSignInSuccess}
+        />
         {notification && (
           <div className="message message-success" style={{
             position: 'fixed',

@@ -609,6 +609,16 @@
     padding: 1.3rem 1.2rem;
     font-size: 0.9rem;
     color: var(--color-muted);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .about-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(10, 77, 60, 0.15);
+    border-color: rgba(10, 77, 60, 0.3);
+    color: var(--color-text);
   }
   
   /* SERVICES & PRODUCTS */
@@ -634,17 +644,36 @@
     padding: 1.3rem 1.2rem;
     box-shadow: var(--shadow-soft);
     font-size: 0.9rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(10, 77, 60, 0.2);
+    border-color: rgba(10, 77, 60, 0.3);
   }
   
   .service-card h3 {
     font-size: 1rem;
     margin-bottom: 0.35rem;
     color: var(--color-text);
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .service-card:hover h3 {
+    color: var(--color-primary);
+    transform: translateX(4px);
   }
   
   .service-card p {
     color: var(--color-muted);
     font-size: 0.88rem;
+    transition: color 0.3s ease;
+  }
+
+  .service-card:hover p {
+    color: var(--color-text);
   }
   
   .service-tag {
@@ -700,6 +729,12 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    border-color: rgba(10, 77, 60, 0.3);
   }
   
   .product-image {
@@ -725,21 +760,43 @@
     font-weight: 600;
     margin-bottom: 0.25rem;
     color: var(--color-text);
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .product-card:hover .product-name {
+    color: var(--color-primary);
+    transform: translateX(4px);
   }
   
   .product-price {
     font-size: 0.9rem;
     color: var(--color-accent);
     margin-bottom: 0.4rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .product-card:hover .product-price {
+    color: var(--color-primary-strong);
+    transform: translateX(4px);
   }
   
   .product-meta {
     font-size: 0.8rem;
     color: var(--color-muted);
+    transition: color 0.3s ease;
+  }
+
+  .product-card:hover .product-meta {
+    color: var(--color-text);
   }
   
   .product-meta strong {
     color: var(--color-text);
+    transition: color 0.3s ease;
+  }
+
+  .product-card:hover .product-meta strong {
+    color: var(--color-primary);
   }
   
   .product-cta {
@@ -795,12 +852,28 @@
     padding: 1.2rem 1.1rem;
     font-size: 0.88rem;
     color: var(--color-muted);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .industry-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(10, 77, 60, 0.15);
+    border-color: rgba(10, 77, 60, 0.3);
+    color: var(--color-text);
   }
   
   .industry-card h3 {
     font-size: 0.98rem;
     margin-bottom: 0.4rem;
     color: var(--color-text);
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .industry-card:hover h3 {
+    color: var(--color-primary);
+    transform: translateX(4px);
   }
   
   /* CONTACT */
@@ -840,6 +913,22 @@
     padding: 1.3rem 1.2rem;
     font-size: 0.9rem;
     box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(10, 77, 60, 0.2);
+    border-color: rgba(10, 77, 60, 0.3);
+  }
+
+  .contact-card:hover .field-label {
+    color: var(--color-primary);
+  }
+
+  .contact-card:hover .field-input,
+  .contact-card:hover .field-textarea {
+    border-color: rgba(10, 77, 60, 0.4);
   }
   
   .field-group {
