@@ -1,0 +1,28 @@
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .page-container h1 {
+    font-size: 2.4rem;
+    color: #0c3b2e;
+    margin-bottom: 20px;
+  }
+  
+  .page-container p {
+    font-size: 1.1rem;
+    color: #4b5563;
+    line-height: 1.6;
+  }
+  
+  .section-title {
+    margin-top: 40px;
+    font-size: 1.5rem;
+    color: #0c3b2e;
+    font-weight: 600;
+  }
+  
+  .industry-block {
+    margin-bottom: 30px;
+  }
