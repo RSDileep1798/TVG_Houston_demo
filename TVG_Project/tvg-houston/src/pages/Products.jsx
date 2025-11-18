@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
 
 const PRODUCTS = [
   {
@@ -32,9 +33,30 @@ const PRODUCTS = [
 ];
 
 export default function Products() {
+  const { addToCart } = useCart();
+  const [notification, setNotification] = useState(null);
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    setNotification(`${product.name} added to cart!`);
+    setTimeout(() => setNotification(null), 3000);
+  };
+
   return (
     <section className="services section">
       <div className="container">
+        {notification && (
+          <div className="message message-success" style={{
+            position: 'fixed',
+            top: '100px',
+            right: '20px',
+            zIndex: 1000,
+            maxWidth: '400px',
+            animation: 'slideUp 0.3s ease',
+          }}>
+            ✓ {notification}
+          </div>
+        )}
         <div className="section-heading">
           <h2>Products</h2>
           <p>Browse our sample range of export-safe bottle products.</p>
@@ -56,7 +78,10 @@ export default function Products() {
                   <strong>Use:</strong> {p.use}
                 </div>
               </div>
-              <button className="add-cart-btn">
+              <button 
+                className="add-cart-btn"
+                onClick={() => handleAddToCart(p)}
+              >
                 Add to Cart
               </button>
             </article>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
@@ -16,7 +17,7 @@ import Cart from './pages/Cart';
 
 export default function App() {
   return (
-    <>
+    <CartProvider>
       <Navbar />
       <main>
         <Routes>
@@ -33,6 +34,6 @@ export default function App() {
       </main>
       <Footer />
       <ChatWidget />
-    </>
+    </CartProvider>
   );
 }

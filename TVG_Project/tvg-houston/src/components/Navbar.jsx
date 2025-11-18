@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import "./Navbar.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { getCartItemCount } = useCart();
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const closeMenu = () => setIsOpen(false);
 
   const navLinkClass = ({ isActive }) =>
     'nav-link' + (isActive ? ' nav-link-active' : '');
+
+  const cartItemCount = getCartItemCount();
 
   return (
     <header>
@@ -57,6 +61,40 @@ export default function Navbar() {
               Contact
             </NavLink>
           </div>
+
+          <Link 
+            to="/cart" 
+            className="btn btn-cart" 
+            onClick={closeMenu}
+            style={{
+              position: 'relative',
+              marginRight: '0.7rem',
+              textDecoration: 'none',
+            }}
+          >
+            Cart
+            {cartItemCount > 0 && (
+              <span
+                style={{
+                  position: 'absolute',
+                  top: '-8px',
+                  right: '-8px',
+                  backgroundColor: '#e74c3c',
+                  color: 'white',
+                  borderRadius: '50%',
+                  width: '20px',
+                  height: '20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.75rem',
+                  fontWeight: 'bold',
+                }}
+              >
+                {cartItemCount}
+              </span>
+            )}
+          </Link>
 
           <Link to="/signin" className="btn btn-sign" onClick={closeMenu}>
             Sign
