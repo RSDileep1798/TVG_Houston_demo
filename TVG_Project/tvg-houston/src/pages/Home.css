@@ -1,11 +1,5 @@
-.hero {
-    display: flex;
-    justify-content: space-between;
-    padding: 80px 40px;
-    background: linear-gradient(135deg, #f7fdfb, #e9f6ef);
-    border-radius: 20px;
-    margin-bottom: 60px;
-  }
+/* Hero styles are now in styles.css with background image */
+/* This file is kept for any Home page specific overrides if needed */
   
   .hero-left h1 {
     font-size: 3rem;

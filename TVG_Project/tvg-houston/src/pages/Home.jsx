@@ -2,8 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Home() {
+  const heroStyle = {
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/worldimage.png)`,
+  };
+
   return (
-    <section className="hero section" id="top">
+    <section className="hero section" id="top" style={heroStyle}>
       <div className="container">
         <div className="hero-grid">
           <div>
