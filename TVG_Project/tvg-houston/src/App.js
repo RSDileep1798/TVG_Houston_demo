@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
 
-import Home from './pages/Home';
+import Home from './Pages/Home';
 import About from './Pages/About';
 import Services from './Pages/Services';
 import Products from './pages/Products'; 
